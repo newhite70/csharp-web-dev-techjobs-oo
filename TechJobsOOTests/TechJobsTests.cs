@@ -7,21 +7,11 @@ namespace TechJobsOOTests
     [TestClass]
     public class TechJobsTests
     {
-
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
-
         Job test_job = new Job();
         Job test_job1 = new Job();
         Job test_job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job test_job4 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-
-
-
-
 
 
         [TestMethod]
@@ -57,16 +47,11 @@ namespace TechJobsOOTests
         [TestMethod]
         public void TestToStringData()
         {
-            string jobString = test_job2.ToString();
-
-            string[] arrJobString = jobString.Split("\n");
-
-            Assert.IsTrue(arrJobString.Contains($"ID: {test_job2.Id}"));
-            Assert.IsTrue(arrJobString.Contains($"Name: {test_job2.Name}"));
-            Assert.IsTrue(arrJobString.Contains($"Employer: {test_job2.EmployerName}"));
-            Assert.IsTrue(arrJobString.Contains($"Location: {test_job2.EmployerLocation}"));
-            Assert.IsTrue(arrJobString.Contains($"Position Type: {test_job2.JobType}"));
-            Assert.IsTrue(arrJobString.Contains($"Core Competency: {test_job2.JobCoreCompetency}"));
+            Assert.AreEqual("Product tester", test_job2.Name.ToString());
+            Assert.AreEqual("Desert", test_job2.EmployerLocation.ToString());
+            Assert.AreEqual("ACME", test_job2.EmployerName.ToString());
+            Assert.AreEqual("Quality control", test_job2.JobType.ToString());
+            Assert.AreEqual("Persistence", test_job2.JobCoreCompetency.ToString());
         }
 
 
@@ -78,7 +63,5 @@ namespace TechJobsOOTests
             Assert.AreEqual("Data not available", test_job4.JobType.ToString());
             Assert.AreEqual("Data not available", test_job4.JobCoreCompetency.ToString());
         }
-       
-        //Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 }
