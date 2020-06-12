@@ -17,6 +17,7 @@ namespace TechJobsOOTests
         Job test_job1 = new Job();
         Job test_job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job test_job4 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
 
 
 
@@ -72,126 +73,12 @@ namespace TechJobsOOTests
          [TestMethod]
         public void TestToStringIfEmpty()
         {
-            Job test_job = new Job();
-            string jobString = test_job.ToString();
-
-            string[] arrJobString = jobString.Split("\n");
-
-            Assert.IsTrue(arrJobString.Contains($"ID: {test_job.Id}"));
-            Assert.IsTrue(arrJobString.Contains($"Name: Data not available"));
-            Assert.IsTrue(arrJobString.Contains($"Employer: Data not available"));
-            Assert.IsTrue(arrJobString.Contains($"Location: Data not available"));
-            Assert.IsTrue(arrJobString.Contains($"Position Type: Data not available"));
-            Assert.IsTrue(arrJobString.Contains($"Core Competency: Data not available"));
-
-            //$"Name: {job.Name ?? "Data not available"}"
+            Assert.AreEqual("Data not available", test_job4.EmployerLocation.ToString());
+            Assert.AreEqual("Data not available", test_job4.EmployerName.ToString());
+            Assert.AreEqual("Data not available", test_job4.JobType.ToString());
+            Assert.AreEqual("Data not available", test_job4.JobCoreCompetency.ToString());
         }
        
         //Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 }
-
-/*
-
-namespace TechJobsTests
-{
-    [TestClass]
-    public class UnitTest1
-    {
-        public const string PRODUCT_TEST = "Product test";
-        public const string EMPLOYER = "ACME";
-        public const string LOCATION = "Desert";
-        public const string POSITION = "Quality control";
-        public const string CORE = "Persistence";
-
-        public Job GetJob()
-        {
-            return new Job(PRODUCT_TEST,
-                            new Employer(EMPLOYER),
-                            new Location(LOCATION),
-                            new PositionType(POSITION),
-                            new CoreCompetency(CORE));
-        }
-
-        [TestMethod]
-        public void TestSettingJobId()
-        {
-            Job job = GetJob();
-
-            Job job2 = GetJob();
-
-            Assert.IsTrue(job2.Id != job.Id);
-        }
-
-        [TestMethod]
-        public void TestJobConstructorSetsAllFields()
-        {
-            Job job = GetJob();
-
-            Assert.IsTrue(job.Name == PRODUCT_TEST &&
-                          job.Employer?.Value == EMPLOYER &&
-                          job.Location?.Value == LOCATION &&
-                          job.PositionType?.Value == POSITION &&
-                          job.CoreCompetency?.Value == CORE);
-        }
-
-        [TestMethod]
-        public void TestJobsForEquality()
-        {
-            Job job = GetJob();
-
-            Job job2 = GetJob();
-
-            Assert.IsFalse(job.Equals(job2));
-        }
-
-        [TestMethod]
-        public void JobToStringHasDelimiters()
-        {
-            Job job = GetJob();
-
-            string s = job.ToString();
-
-            string[] arr = s.Split("\n");
-
-            Assert.IsTrue(arr.Count() >= 2 && arr.First() == string.Empty && arr.Last() == string.Empty);
-        }
-
-        [TestMethod]
-        public void JobToStringPrintsArgsOnNewLines()
-        {
-            Job job = GetJob();
-
-            string s = job.ToString();
-
-            string[] arr = s.Split("\n");
-
-            Assert.IsTrue(arr.Any(s => s == $"ID: {job.Id}"));
-            Assert.IsTrue(arr.Any(s => s == $"Name: {job.Name}"));
-            Assert.IsTrue(arr.Any(s => s == $"Employer: {job.Employer}"));
-            Assert.IsTrue(arr.Any(s => s == $"Location: {job.Location}"));
-            Assert.IsTrue(arr.Any(s => s == $"Position Type: {job.PositionType}"));
-            Assert.IsTrue(arr.Any(s => s == $"Core Competency: {job.CoreCompetency}"));
-        }
-
-        [TestMethod]
-        public void JobToStringPrintsNullArgsCoallesceOnPrint()
-        {
-            Job job = new Job();
-
-            string s = job.ToString();
-
-            string[] arr = s.Split("\n");
-
-            Assert.IsTrue(arr.Any(s => s == $"ID: {job.Id}"));
-            Assert.IsTrue(arr.Any(s => s == $"Name: {job.Name ?? "Data not available"}"));
-            Assert.IsTrue(arr.Any(s => s == $"Employer: {job.Employer?.ToString() ?? "Data not available"}"));
-            Assert.IsTrue(arr.Any(s => s == $"Location: {job.Location?.ToString() ?? "Data not available"}"));
-            Assert.IsTrue(arr.Any(s => s == $"Position Type: {job.PositionType?.ToString() ?? "Data not available"}"));
-            Assert.IsTrue(arr.Any(s => s == $"Core Competency: {job.CoreCompetency?.ToString() ?? "Data not available"}"));
-        }
-    }
-}
-
-
-*/

@@ -19,7 +19,19 @@ namespace TechJobsOO
 
         public JobField(string value) : this()
         {
-            Value = value;
+            if (string.IsNullOrEmpty(value) == true)
+            {
+                Value = "Data not available";
+                //Value = value;
+            }
+            else if (value == null)
+            {
+                Value = "Data not available";
+            }
+            else
+            {
+                Value = value;
+            }
         }
 
 

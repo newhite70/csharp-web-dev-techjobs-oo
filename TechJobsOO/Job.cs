@@ -48,31 +48,9 @@ namespace TechJobsOO
 
         public override string ToString()
         {
-
-            
-            string stringPrinted = "\n";
-            stringPrinted += $"ID: {Id}\n";
-            
-            if (string.IsNullOrEmpty(Name))
-            {
-               Name = "Data not available";
-            }
-            stringPrinted += $"Name: {Name}\nEmployer: {EmployerName?.ToString() ?? "Data not available"}\nLocation: {EmployerLocation?.ToString() ?? "Data not available"}\nPosition Type: {JobType?.ToString() ?? "Data not available"}\nCore Competency: {JobCoreCompetency?.ToString() ?? "Data not available"}\n\n";
-
-
-
-
+            string stringPrinted = $"\nID: {Id}\nName: {Name}\nEmployer: {EmployerName}\nLocation: {EmployerLocation}\nPosition Type: {JobType}\nCore Competency: {JobCoreCompetency}\n";
             return stringPrinted;
         }
-
-
-        //public override string ToString()
-        //{
-
-        //    return Job;
-        //}
-
-
     }
 }
 
